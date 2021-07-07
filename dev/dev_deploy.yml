@@ -1,0 +1,6 @@
+- hosts: brand-ansible
+  gather_facts: false
+  tasks:
+    - name:  deploy apk by brand playbook
+      become_user: root
+      shell:  ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook /data-disk/brand-team/deploy-android-apk.yml --extra-vars 'host=ext-nginx-static apkFeed={{feed}} version={{version}}' -i /data-disk/brand-team/{{qat_host}}.ini
